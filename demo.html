@@ -1,65 +1,94 @@
 <!doctype html>
 <html>
+
 <head>
-  <title>Solari</title>
+    <title>Solari</title>
 </head>
+
 <body>
-	<div id="container"></div>
-  <script src="lib/underscore.js"></script>
-  <script src="lib/Three.js"></script>
-  <script src="lib/stats.js"></script>
-  <script src="lib/events.js"></script>
-  <script src="src/SolariTexture.js"></script>
-  <script src="src/SolariRow.js"></script>
-  <script src="src/SolariFlap.js"></script>
-  <script src="src/Solari.js"></script>
-  <script>
-  (function () {
-  var board = window.Board = new Solari;
-  new SolariTexture().bind('load', function () {
-    var alphaSet = this,
-        row;
+    <div id="container"></div>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/Three.js"></script>
+    <script src="lib/stats.js"></script>
+    <script src="lib/events.js"></script>
+    <script src="src/SolariTexture.js"></script>
+    <script src="src/SolariRow.js"></script>
+    <script src="src/SolariFlap.js"></script>
+    <script src="src/Solari.js"></script>
+    <script>
+    (function() {
+        var board = window.Board = new Solari;
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$()^-_+&=;:*'" + '",.<>/k?|%wroygbp '; // only ascii with 1 byte characters
+        console.log(chars.length)
 
-    document.getElementById('container').appendChild(board.el);
+        new SolariTexture().bind('load', function() {
+            var alphaSet = this,
+                row;
 
-    // Set up the board
-    _(8).times(function () {
-      row = new SolariRow(board.y);
 
-      _(24).times(function () {
-        row.add(alphaSet);
-      });
-      board.add(row);
-    });
+            document.getElementById('container').appendChild(board.el);
 
-    Board.start();
+            // Set up the board
+            _(7).times(function() {
+                row = new SolariRow(board.y);
 
-    // Set a message
-    setTimeout(function () {
-      Board.setMessage([
-        'THUNDERCATS',
-        'ARE ON THE MOVE',
-        'THUNDERCATS ARE LOOSE',
-        'FEEL THE MAGIC',
-        'HEAR THE ROAR',
-        'THUNDERCATS ARE LOOSE',
-        'THUNDER THUNDER THUNDER',
-        'THUNDERCATS HO'
-      ])
-    }, 2000);
-  }).load('img/chars.png', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-.# '.split(''), 70, 63);
+                _(23).times(function() {
+                    row.add(alphaSet);
+                });
+                board.add(row);
+            });
 
-  })();
-  </script>
-  <style>
-  *{
-    margin:0;
-    padding:0;
-    overflow:hidden;
-  }
-  body{
-    background:#111;
-  }
-  </style>
+            Board.start();
+
+            // Set a message
+            setTimeout(function() {
+                Board.setMessage([
+                    'ABCDEFGHIJKLMNOPQRSTUVW',
+                    'XYZ1234567890!@#$()^-_+',
+                    "&=;:*'" + '",.<>/k?|%',
+                    'wroygbp',
+                    '',
+                    '161 BITS',
+                    '70 CHARACTERS / BIT'
+                ])
+            }, 1000);
+
+            setTimeout(function() {
+                Board.setMessage([
+                    'HELLO WORLD!'
+                ])
+            }, 20000);
+
+            setTimeout(function() {
+                Board.setMessage([
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    'SADLY,',
+                    'THIS DEMO HAS ENDED.y'
+                ])
+            }, 35000);
+
+        }).load('img/chars.png', chars.split(''), 70, 59);
+        //  }).load('img/chars.png', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-.# '.split(''), 70, 63);
+
+    })();
+    </script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body {
+        background: #ddd;
+/*        background-image: url("img/bg.png");
+        background-repeat: repeat;*/
+    }
+    </style>
 </body>
+
 </html>

@@ -45,7 +45,7 @@ var Solari = function () {
   this.renderer.setSize(this.width, this.height);
 
   this.pointLight = new THREE.PointLight(0xFFFFFF);
-  this.ambientLight = new THREE.AmbientLight(0x333333);
+  this.ambientLight = new THREE.AmbientLight(0xAAAAAA);
 
   this.pointLight.position.x = 1000;
   this.pointLight.position.y = -800;
@@ -79,7 +79,7 @@ Solari.prototype = _.extend({
        self.scene.add(obj);
       });
     });
-    this.y += row.height + 10;
+    this.y += row.height + 0;
 
     this.camera.position.x = (row.x - 10) / 2;
     this.camera.position.y = -((row.y - (row.height/2)) / 2);
