@@ -2,11 +2,14 @@
 <html>
 
 <head>
-    <title>Solari</title>
-</head>
+    <meta charset="utf-8">
+    <meta name="description" content="Solari Board « Vestaboard Style »">
+    <meta name="keyword" content="solari vestaboard split flap">
+    <meta name="author" content="devleaks">
+    <link rel="icon" type="image/png" href="favicon.ico">
 
-<body>
-    <div id="container"></div>
+    <title>Solari</title>
+
     <script src="lib/underscore.js"></script>
     <script src="lib/Three.js"></script>
     <script src="lib/stats.js"></script>
@@ -15,18 +18,39 @@
     <script src="src/SolariRow.js"></script>
     <script src="src/SolariFlap.js"></script>
     <script src="src/Solari.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #solariboard {
+        border: 4px solid black;
+    }
+
+    body {
+        background: #ddd;
+        /*background-image: url("img/bg.png");*/
+        /*background-repeat: repeat;*/
+    }
+    </style>
+</head>
+
+<body>
+    <div id="solariboard"></div>
     <script>
     (function() {
         var board = window.Board = new Solari;
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$()^-_+&=;:*'" + '",.<>/k?|%wroygbp '; // only ascii with 1 byte characters
-        console.log(chars.length)
+        // console.log(chars.length)
 
         new SolariTexture().bind('load', function() {
             var alphaSet = this,
                 row;
 
 
-            document.getElementById('container').appendChild(board.el);
+            document.getElementById('solariboard').appendChild(board.el);
 
             // Set up the board
             _(7).times(function() {
@@ -37,6 +61,8 @@
                 });
                 board.add(row);
             });
+
+            //Board.displayStats();
 
             Board.start();
 
@@ -51,13 +77,13 @@
                     '161 BITS',
                     '70 CHARACTERS / BIT'
                 ])
-            }, 1000);
+            }, 1000); // 1 sec
 
             setTimeout(function() {
                 Board.setMessage([
                     'HELLO WORLD!'
                 ])
-            }, 20000);
+            }, 20000); // 20 sc
 
             setTimeout(function() {
                 Board.setMessage([
@@ -69,26 +95,23 @@
                     'SADLY,',
                     'THIS DEMO HAS ENDED.y'
                 ])
-            }, 35000);
+            }, 35000); //35 sec
 
+            /*
+                            Board.setMessage([
+                                '         yyyyy         ',
+                                '      yy       yy      ',
+                                '     y   w   w   y     ',
+                                '    y r y     y r y    ',
+                                '     y   yyyyy   y     ',
+                                '      yy       yy      ',
+                                '         yyyyy         ',
+                            ])
+            */
         }).load('img/chars.png', chars.split(''), 70, 59);
-        //  }).load('img/chars.png', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-.# '.split(''), 70, 63);
 
     })();
     </script>
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    body {
-        background: #ddd;
-/*        background-image: url("img/bg.png");
-        background-repeat: repeat;*/
-    }
-    </style>
 </body>
 
 </html>

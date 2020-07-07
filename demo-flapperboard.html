@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>VESTABOARD</title>
+        <link href="src/flapper.css" type="text/css" rel="stylesheet" />
+        <script src="lib/zepto.js"></script>
+        <script src="src/flapper.js"></script>
+        <style type="text/css">
+            body {
+                font-family: Roboto Condensed;
+                color: #333;
+            }
+
+            .page {
+                width: 900px;
+                margin: 30px auto 0;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 24px;
+            }
+
+            .displays {
+                padding: 30px;
+                border: 10px solid #222;
+                background-color: #222;
+                border-radius: 4px;
+                box-shadow: 0 0 12px 4px #000 inset;
+            }
+
+            .flapper {
+                margin-bottom: 2px;
+                text-align: center;
+            }
+
+            .inputarea {
+                margin: 24px 0;
+            }
+
+            #typesomething,
+            #showme {
+                font-family: Roboto Condensed;
+                font-size: 18px;
+                padding: 14px;
+                background-color: #EEE;
+                color: #333;
+                border: 0;
+                height: 170px;
+            }
+
+            #typesomething {
+                width: 300px;
+            }
+
+            #showme:hover {
+                background-color: #DDD;
+            }
+
+            #showme:active {
+                background-color: #CCC;
+            }
+
+            div.inline {
+                display: inline-block;
+                vertical-align: bottom;
+            }
+
+            div.activity {
+                width: 12px;
+                height: 12px;
+                border-radius: 6px;
+                background-color: #250000;
+                position: relative;
+                top: 33px;
+                left: -15px;
+            }
+
+            div.activity.active {
+                background-color: #f00;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <h1>VESTABOARD</h1>
+            <p>Stolen code from <a href="https://github.com/jayKayEss/Flapper">https://github.com/jayKayEss/Flapper</a>, adjusted for Vestaboard.</p>
+            <div class="displays">
+                <input class="display S" />
+                <input class="display S" />
+                <input class="display S" />
+                <input class="display S" />
+                <input class="display S" />
+                <input class="display S" />
+                <input class="display S" />
+            </div>
+            <div class="inputarea">
+                <div class="inline"><textarea id="typesomething" placeholder="Type Something Here..." rows="6" cols="20"></textarea></div>
+                <div class="inline"><button id="showme">And Click Here</button></div>
+            </div>
+        </div>
+        <script src="src/flapdemo.js"></script>
+    </body>
+</html>
+
